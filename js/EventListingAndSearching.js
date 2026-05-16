@@ -21,7 +21,7 @@ localStorage.setItem("events", JSON.stringify(defaultEvents));
 
 // LOAD FROM STORAGE
 let events = JSON.parse(localStorage.getItem("events")) || [];
-let registrations = JSON.parse(localStorage.getItem("registrations")) || [];
+
 
 //  DISPLAY EVENTS
 function displayEvents(data) {
@@ -111,6 +111,3 @@ document.getElementById("categoryFilter").addEventListener("change", updateEvent
 document.getElementById("dateFilter").addEventListener("change", updateEvents);
 // ✅ INITIAL LOAD
 displayEvents(events);
-localStorage.removeItem("events");
-
-localStorage.removeItem("registrations");

@@ -38,9 +38,9 @@
       <p id="successMessage"></p>
     </div>
 
-    <script src="js/EventListingAndSearching.js"></script>
-
     <script>
+      let registrations =
+        JSON.parse(localStorage.getItem("registrations")) || [];
       const selectedEvent = JSON.parse(localStorage.getItem("selectedEvent"));
 
       document.getElementById("eventName").value = selectedEvent.eventName;
@@ -93,7 +93,7 @@
 
         // redirect to the home page after 1.5 seconds
         setTimeout(() => {
-          window.location.href = "home.html";
+          window.location.href = "EventListing.html";
         }, 1500);
       });
     </script>
