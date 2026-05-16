@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Event Portal</title>
+    <link rel="stylesheet" href="EventListingAndSearching.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🎓 Smart Event Portal</h1>
+    </header>
+
+    <!-- CONTROLS -->
+    <section class="controls">
+
+        <input type="text" id="searchInput" placeholder="🔍 Search events...">
+
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Technical">Technical</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Sports">Sports</option>
+        </select>
+
+        <select id="dateFilter">
+            <option value="all">All Dates</option>
+            <option value="2026-06-10">June 10</option>
+            <option value="2026-06-12">June 12</option>
+            <option value="2026-06-14">June 14</option>
+        </select>
+
+    </section>
+
+    <!-- EVENTS -->
+    <section id="eventContainer"></section>
+
+    <script src="EventListingAndSearching.js"></script>
+
+</body>
+</html>
