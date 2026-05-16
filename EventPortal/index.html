@@ -124,6 +124,31 @@
         font-size: 1.5rem;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       }
+
+      /* Review Section Styling */
+      .reviews-section {
+        padding: 80px 5%;
+        background: var(--bg-color);
+      }
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+      }
+      .review-card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: var(--shadow-sm);
+        text-align: left;
+        color: var(--secondary-color);
+      }
+      .review-stars {
+        color: var(--primary-accent);
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
     </style>
   </head>
   <body>
@@ -133,7 +158,9 @@
         <ul class="nav-links">
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="EventListing.html">Events</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
           <li><a href="feedbackForm.html">Contact & Feedback</a></li>
+          <li><button id="themeToggle" class="theme-btn">🌓</button></li>
         </ul>
       </div>
     </nav>
@@ -212,6 +239,19 @@
           </div>
         </div>
       </section>
+
+      <!-- REVIEWS SECTION -->
+      <section class="reviews-section">
+        <div style="text-align: center">
+          <span class="category Cultural">Wall of Love</span>
+          <h2 style="font-size: 2.5rem; margin-top: 10px; color: #333">
+            Student Experiences
+          </h2>
+        </div>
+        <div class="reviews-grid" id="reviewsContainer">
+          <!-- Populated by JS -->
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -267,8 +307,45 @@
         track.style.transform = `translateX(-${currentPos * slideWidth}px)`;
       }
 
+      function initReviews() {
+        const container = document.getElementById("reviewsContainer");
+        const feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+        if (feedbacks.length === 0) {
+          container.innerHTML =
+            "<p style='grid-column: 1/-1; text-align: center; color: #666;'>No reviews yet. Be the first to share your experience!</p>";
+          return;
+        }
+
+        container.innerHTML = feedbacks
+          .map(
+            (f) => `
+          <div class="review-card">
+            <div class="review-stars">${"★".repeat(f.rating)}${"☆".repeat(5 - f.rating)}</div>
+            <p style="font-style: italic; margin-bottom: 15px;">"${f.message}"</p>
+            <div style="font-weight: bold; font-size: 0.9rem;">- ${f.eventName}</div>
+            <div style="font-size: 0.8rem; color: #888;">${f.date}</div>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
       document.addEventListener("DOMContentLoaded", () => {
         initCarousel();
+        initReviews();
+
+        // Theme Toggle Logic
+        const themeBtn = document.getElementById("themeToggle");
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+
+        themeBtn.addEventListener("click", () => {
+          const current = document.documentElement.getAttribute("data-theme");
+          const target = current === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", target);
+          localStorage.setItem("theme", target);
+        });
       });
     </script>
   </body>

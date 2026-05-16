@@ -14,7 +14,9 @@
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="EventListing.html" class="active">Events</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
           <li><a href="feedbackForm.html">Contact & Feedback</a></li>
+          <li><button id="themeToggle" class="theme-btn">🌓</button></li>
         </ul>
       </div>
     </nav>
@@ -54,5 +56,19 @@
     </footer>
 
     <script src="../js/EventListingAndSearching.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeBtn = document.getElementById("themeToggle");
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+
+        themeBtn.addEventListener("click", () => {
+          const current = document.documentElement.getAttribute("data-theme");
+          const target = current === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", target);
+          localStorage.setItem("theme", target);
+        });
+      });
+    </script>
   </body>
 </html>
