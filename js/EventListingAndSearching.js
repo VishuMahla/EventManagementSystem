@@ -1,4 +1,4 @@
-// ✅ EVENTS DATA (AUTO LOAD)
+// EVENTS DATA (AUTO LOAD)
 const defaultEvents = [
   { id: 1, eventName: "Hackathon", eventCategory: "Technical", eventDate: "2026-06-10" },
   { id: 2, eventName: "Coding Contest", eventCategory: "Technical", eventDate: "2026-06-10" },
@@ -52,6 +52,13 @@ function displayEvents(data) {
         `;
     });
 }
+function registerEvent(eventId) {
+        const selectedEvent = events.find((event) => event.id === eventId);
+
+        localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
+
+        window.location.href = "register.html";
+      }
 
 // ✅ FILTER + SEARCH + DATE
 function updateEvents() {
@@ -80,18 +87,18 @@ function updateEvents() {
 }
 
 // ✅ REGISTER FUNCTION
-function registerEvent(id) {
+// function registerEvent(id) {
 
-    const selected = events.find(e => e.id === id);
+//     const selected = events.find(e => e.id === id);
 
-    if (!registrations.some(e => e.id === id)) {
-        registrations.push(selected);
-        localStorage.setItem("registrations", JSON.stringify(registrations));
-        alert("✅ Registered Successfully!");
-    } else {
-        alert("⚠️ Already Registered!");
-    }
-}
+//     if (!registrations.some(e => e.id === id)) {
+//         registrations.push(selected);
+//         localStorage.setItem("registrations", JSON.stringify(registrations));
+//         alert("✅ Registered Successfully!");
+//     } else {
+//         alert("⚠️ Already Registered!");
+//     }
+// }
 // ✅ EVENTS
 document.getElementById("searchInput").addEventListener("keyup", updateEvents);
 document.getElementById("categoryFilter").addEventListener("change", updateEvents);
