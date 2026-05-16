@@ -11,138 +11,264 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../Css/global.css" />
-    <link rel="stylesheet" href="../Css/components.css" />
-    <link rel="stylesheet" href="../Css/pages.css" />
-    <link rel="stylesheet" href="../Css/responsive.css" />
+    <link rel="stylesheet" href="../Css/EventListingAndSearching.css" />
+    <style>
+      /* Redesigned Sections Styling */
+      :root {
+        --primary-accent: #ff7b00;
+        --bg-gradient: linear-gradient(to right, #830aa8, #3e0346);
+      }
+
+      .hero-redesign {
+        position: relative;
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.6;
+        z-index: 1;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(62, 3, 70, 0.9), transparent);
+        z-index: 2;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        padding: 0 5%;
+        text-align: left;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 900;
+        margin: 0;
+        line-height: 1.1;
+      }
+
+      .about-event {
+        padding: 80px 10%;
+        background: white;
+        color: #333;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 60px;
+        align-items: center;
+        text-align: left;
+      }
+
+      .about-event img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .carousel-section {
+        padding: 80px 5%;
+      }
+
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        padding: 20px 0;
+      }
+
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        gap: 30px;
+      }
+
+      .carousel-slide {
+        min-width: calc(33.33% - 20px);
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+        transform: translateY(-50%);
+        z-index: 5;
+      }
+
+      .nav-btn {
+        pointer-events: auto;
+        background: var(--primary-accent);
+        border: none;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+    </style>
   </head>
   <body>
-    <div data-app-nav></div>
+    <nav class="navbar">
+      <div class="container navbar-content">
+        <a href="index.html" class="nav-logo">🎓 Smart Event Portal</a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="EventListing.html">Events</a></li>
+          <li><a href="feedbackForm.html">Contact & Feedback</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <main>
-      <section class="hero">
-        <div class="hero-slide active">
-          <img
-            src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80"
-            alt="Students at a college event"
-          />
-        </div>
-        <div class="hero-slide">
-          <img
-            src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=80"
-            alt="Conference stage lighting"
-          />
-        </div>
-        <div class="hero-slide">
-          <img
-            src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1600&q=80"
-            alt="Audience watching a live event"
-          />
-        </div>
-        <div class="container hero-content">
-          <span class="tag">College Event Platform</span>
-          <h1>SMART EVENT MANAGEMENT PORTAL</h1>
-          <p>
-            Discover campus events, register in seconds, track upcoming
-            schedules, and share feedback through one polished student portal.
+      <!-- BANNER SECTION -->
+      <section class="hero-redesign">
+        <img
+          src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80"
+          class="hero-bg"
+          alt="Campus"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="category Technical">Academic Year 2024-25</span>
+          <h1>SMART EVENT<br />PORTAL</h1>
+          <p
+            style="
+              max-width: 600px;
+              margin: 20px 0;
+              font-size: 1.2rem;
+              opacity: 0.9;
+            "
+          >
+            The ultimate hub for campus engagement. Discover, register, and
+            experience the best events across all disciplines.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="events.html">Explore Events</a>
-            <a class="btn btn-ghost" href="register.html">Register Now</a>
-          </div>
+          <a
+            href="EventListing.html"
+            class="category Technical"
+            style="
+              text-decoration: none;
+              padding: 15px 40px;
+              font-size: 1.1rem;
+              display: inline-block;
+            "
+            >Explore Events</a
+          >
         </div>
       </section>
 
-      <section class="stats-strip">
-        <div class="container card stats-grid">
-          <div class="stat">
-            <h3>25+</h3>
-            <p>Campus programs</p>
-          </div>
-          <div class="stat">
-            <h3>6</h3>
-            <p>Live event categories</p>
-          </div>
-          <div class="stat">
-            <h3>24/7</h3>
-            <p>Dashboard access</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="about">
-        <div class="container about-layout">
-          <div
-            class="about-media fade-in"
-            aria-label="College auditorium"
-          ></div>
-          <div class="fade-in">
-            <span class="tag">About</span>
-            <h2 class="section-title">
-              A cleaner way to manage college events.
-            </h2>
-            <p class="section-lead">
-              The portal brings listings, registrations, reminders, feedback,
-              and student engagement into a responsive frontend that is ready
-              for API integration.
-            </p>
-            <div class="highlight-list">
-              <div class="highlight-item">
-                <strong>Fast discovery</strong>
-                <p class="muted">
-                  Students can search, filter, and sort events without waiting
-                  for page reloads.
-                </p>
-              </div>
-              <div class="highlight-item">
-                <strong>Simple registration</strong>
-                <p class="muted">
-                  Validated forms store records locally now and can post to Web
-                  API later.
-                </p>
-              </div>
-              <div class="highlight-item">
-                <strong>Live dashboard</strong>
-                <p class="muted">
-                  Registration counts and countdowns update from shared app
-                  data.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <span class="tag">Featured</span>
-          <h2 class="section-title">Upcoming highlights</h2>
-          <p class="section-lead">
-            A curated set of technology, culture, sports, and workshop events
-            for students and faculty.
+      <!-- ABOUT EVENT SECTION -->
+      <section class="about-event" id="about">
+        <img
+          src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
+          alt="About Event"
+        />
+        <div>
+          <span class="category Cultural">Our Mission</span>
+          <h2 style="font-size: 3rem; margin: 10px 0">
+            Empowering Student Engagement
+          </h2>
+          <p style="font-size: 1.1rem; line-height: 1.6; color: #555">
+            Our portal simplifies event management by providing a seamless
+            interface for students to browse and register. From high-stakes
+            hackathons to vibrant cultural festivals and intense sporting
+            competitions, we bring everything to your fingertips.
           </p>
-          <div class="grid grid-3" id="featuredEvents"></div>
+        </div>
+      </section>
+
+      <!-- FEATURED EVENTS SECTION (CAROUSEL) -->
+      <section class="carousel-section">
+        <div style="text-align: center; margin-bottom: 50px">
+          <span class="category Sports">Handpicked for you</span>
+          <h2 style="font-size: 2.5rem; margin-top: 10px">Featured Events</h2>
+        </div>
+
+        <div class="carousel-container">
+          <div class="carousel-nav">
+            <button class="nav-btn" onclick="slideCarousel(-1)">❮</button>
+            <button class="nav-btn" onclick="slideCarousel(1)">❯</button>
+          </div>
+          <div class="carousel-track" id="featuredEvents">
+            <!-- Populated by JS -->
+          </div>
         </div>
       </section>
     </main>
 
-    <div data-app-footer></div>
-    <script src="js/data.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/common.js?v=2"></script>
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Smart Event Portal. All rights reserved.</p>
+        <p>
+          Contact us at
+          <a href="mailto:info@smarteventportal.com"
+            >info@smarteventportal.com</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/EventListingAndSearching.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", async () => {
-        const events = (await getEvents()).slice(0, 3);
-        const grid = document.querySelector("#featuredEvents");
-        events.forEach((eventItem) =>
-          grid.appendChild(createEventCard(eventItem)),
-        );
-        setTimeout(
-          () =>
-            document
-              .querySelectorAll("#featuredEvents .fade-in")
-              .forEach((item) => item.classList.add("visible")),
-          80,
-        );
+      let currentPos = 0;
+
+      function initCarousel() {
+        const track = document.getElementById("featuredEvents");
+        // Use defaultEvents from the imported script
+        const list = typeof defaultEvents !== "undefined" ? defaultEvents : [];
+
+        track.innerHTML = list
+          .map(
+            (e) => `
+          <div class="carousel-slide">
+            <div class="card" style="text-align: left; margin: 0;">
+              <img src="${e.image}" alt="${e.eventName}" class="event-img">
+              <div class="card-content">
+                <h3>${e.eventName}</h3>
+                <span class="category ${e.eventCategory}">${e.eventCategory}</span>
+                <p>📅 ${new Date(e.eventDate).toDateString()}</p>
+                <button onclick="registerEvent(${e.id})" class="category Technical" style="width: 100%; border:none; cursor:pointer; padding: 10px;">Register Now</button>
+              </div>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      function slideCarousel(dir) {
+        const track = document.getElementById("featuredEvents");
+        const slides = document.querySelectorAll(".carousel-slide");
+        const slideWidth = slides[0].offsetWidth + 30; // slide + gap
+        const maxPos = slides.length - 3;
+
+        currentPos += dir;
+        if (currentPos < 0) currentPos = 0;
+        if (currentPos > maxPos) currentPos = maxPos;
+
+        track.style.transform = `translateX(-${currentPos * slideWidth}px)`;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initCarousel();
       });
     </script>
   </body>
