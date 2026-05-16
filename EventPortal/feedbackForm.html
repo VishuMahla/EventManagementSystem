@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <h1>Contact Form</h1>
+      <form action="">
+        <div>Full Name</div>
+        <br />
+        <input type="text" placeholder="Full Name" maxlength="20" />
+        <br /><br />
+        <div>Email Address</div>
+        <br />
+        <input type="text" placeholder="Email Address" maxlength="500" />
+        <br /><br />
+        <div>Subject</div>
+        <br />
+        <input type="text" placeholder="Subject" maxlength="100" />
+        <br /><br />
+        <div>Message</div>
+        <br />
+        <textarea
+          name="text"
+          id="ContactMessage"
+          maxlength="500"
+          placeholder="Type here..."
+          rows="5"
+          cols="30"
+        ></textarea>
+        <p id="warning"></p>
+        <br /><br />
+        <button>Submit</button>
+      </form>
+    </section>
+    <section>
+      <h1>Feedback Form</h1>
+      <form action="">
+        <div>Name</div>
+        <br />
+        <input type="text" placeholder="Name" maxlength="20" />
+        <br /><br />
+        <div>Event name</div>
+        <br />
+        <select name="EventSelection" id="">
+          <option value="event1">Event1</option>
+          <option value="event2">Event2</option>
+          <option value="event3">Event3</option>
+          <option value="event4">Event4</option>
+        </select>
+        <br /><br />
+        <div>Feedback Message</div>
+        <br />
+        <textarea
+          name="text"
+          id="CantactMessage"
+          maxlength="500"
+          placeholder="Type here..."
+          rows="5"
+          cols="30"
+        ></textarea>
+        <p id="warningg"></p>
+        <br /><br />
+        <div>Rating</div>
+        <br />
+        <div class="stars">
+          <span>☆</span>
+          <span>☆</span>
+          <span>☆</span>
+          <span>☆</span>
+          <span>☆</span>
+        </div>
+        <br />
+        <div>Recommendation</div>
+        <br />
+        <p>What should we improve?</p>
+        <div>
+          <input type="checkbox" name="" id="" />
+          Event Timing
+        </div>
+        <div>
+          <input type="checkbox" name="" id="" />
+          Venue Arrangement
+        </div>
+        <div>
+          <input type="checkbox" name="" id="" />
+          Audio Quality
+        </div>
+        <div>
+          <input type="checkbox" name="" id="" />
+          Registration Process
+        </div>
+        <br /><br />
+        <button>Submit</button>
+      </form>
+    </section>
+    <script>
+      function maxValidationForContactForm() {
+        if (textbox.value.length < 500) {
+          document.getElementById("warning").textContent =
+            `${textbox.value.length}/500`;
+        } else {
+          document.getElementById("warning").textContent =
+            `You have entered max Characters..`;
+        }
+      }
+
+      function maxValidationForFeedbackForm() {
+        if (feedbackFormBox.value.length < 50) {
+          document.getElementById("warningg").textContent =
+            `${feedbackFormBox.value.length}/50`;
+        } else {
+          document.getElementById("warningg").textContent =
+            `You have entered max Characters..`;
+        }
+      }
+
+      let textbox = document.getElementById("ContactMessage");
+      let counter = document.getElementById("count");
+      let feedbackFormBox = document.getElementById("CantactMessage")
+      textbox.addEventListener("input",maxValidationForContactForm);
+
+      feedbackFormBox.addEventListener("input",maxValidationForFeedbackForm)
+    </script>
+  </body>
+</html>
