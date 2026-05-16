@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events List</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1 class="main-heading">Upcoming Events</h1>
+
+    <div id="eventsContainer" class="events-container"></div>
+
+    <script src="js/data.js"></script>
+
+    <script>
+      const eventsContainer = document.getElementById("eventsContainer");
+
+      events.forEach((event) => {
+        const card = document.createElement("div");
+
+        card.classList.add("event-card");
+
+        card.innerHTML = `
+
+                <h2>${event.eventName}</h2>
+
+                <p>
+                    <strong>Category:</strong>
+                    ${event.eventCategory}
+                </p>
+
+                <p>
+                    <strong>Date:</strong>
+                    ${event.eventDate}
+                </p>
+
+                <button onclick="registerEvent(${event.id})">
+                    Register
+                </button>
+            `;
+
+        eventsContainer.appendChild(card);
+      });
+
+      function registerEvent(eventId) {
+        const selectedEvent = events.find((event) => event.id === eventId);
+
+        localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
+
+        window.location.href = "register.html";
+      }
+    </script>
+  </body>
+</html>

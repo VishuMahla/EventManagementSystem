@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Event</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Event Registration</h1>
+
+      <form id="registrationForm">
+        <input type="text" id="fullName" placeholder="Full Name" required />
+
+        <input type="email" id="email" placeholder="Email" required />
+
+        <input type="tel" id="phone" placeholder="Phone Number" required />
+
+        <input type="text" id="college" placeholder="College Name" required />
+
+        <input type="text" id="eventName" readonly />
+
+        <input type="text" id="eventCategory" readonly />
+        <input type="date" id="eventDate" readonly />
+
+        <select id="gender" required>
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+
+        <button type="submit">Register</button>
+      </form>
+
+      <p id="successMessage"></p>
+    </div>
+
+    <script src="js/data.js"></script>
+
+    <script>
+      const selectedEvent = JSON.parse(localStorage.getItem("selectedEvent"));
+
+      document.getElementById("eventName").value = selectedEvent.eventName;
+
+      document.getElementById("eventCategory").value =
+        selectedEvent.eventCategory;
+      document.getElementById("eventDate").value = selectedEvent.eventDate;
+
+      const registrationForm = document.getElementById("registrationForm");
+
+      registrationForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const registration = {
+          registrationId: Date.now(),
+
+          fullName: document.getElementById("fullName").value,
+
+          email: document.getElementById("email").value,
+
+          phone: document.getElementById("phone").value,
+
+          college: document.getElementById("college").value,
+
+          gender: document.getElementById("gender").value,
+
+          eventId: selectedEvent.id,
+          eventName: selectedEvent.eventName,
+          eventCategory: selectedEvent.eventCategory,
+          eventDate: selectedEvent.eventDate,
+        };
+
+        registrations.push(registration);
+
+        localStorage.setItem("registrations", JSON.stringify(registrations));
+
+        document.getElementById("successMessage").innerText =
+          "Registration Successful";
+
+        console.log(registrations);
+
+        registrationForm.reset();
+
+        document.getElementById("eventName").value = selectedEvent.eventName;
+
+        document.getElementById("eventCategory").value =
+          selectedEvent.eventCategory;
+      });
+    </script>
+  </body>
+</html>
