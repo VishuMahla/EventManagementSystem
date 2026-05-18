@@ -22,41 +22,71 @@ localStorage.setItem("events", JSON.stringify(defaultEvents));
 // LOAD FROM STORAGE
 let events = JSON.parse(localStorage.getItem("events")) || [];
 
+let countdownInterval;
+
+/**
+ * Updates all visible countdown timers on the page.
+ */
+function updateAllCountdowns() {
+    const countdownElements = document.querySelectorAll(".event-timer");
+    const now = new Date().getTime();
+
+    countdownElements.forEach(el => {
+        const eventDate = new Date(el.dataset.date).getTime();
+        const distance = eventDate - now;
+
+        if (distance < 0) {
+            el.textContent = "EVENT STARTED";
+            el.classList.add("expired");
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        el.textContent = `Time Left : ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    });
+}
 
 //  DISPLAY EVENTS
 function displayEvents(data) {
     const container = document.getElementById("eventContainer");
     container.innerHTML = "";
 
+    // Clear existing timer to prevent multiple intervals running
+    if (countdownInterval) clearInterval(countdownInterval);
+
     if (data.length === 0) {
         container.innerHTML = "<h2>No events found </h2>";
         return;
     }
 
-   data.forEach(e => {
-
-    container.innerHTML += `
-    <div class="card">
-
-        <img src="${e.image}" alt="${e.eventName}" class="event-img">
-
-        <div class="card-content">
-            <h2>${e.eventName}</h2>
-
-            <span class="category ${e.eventCategory}">
-                ${e.eventCategory}
-            </span>
-
-            <p>📅 ${new Date(e.eventDate).toDateString()}</p>
-
-            <button onclick="registerEvent(${e.id})">
-                Register
-            </button>
+    let html = "";
+    data.forEach(e => {
+        html += `
+        <div class="card">
+            <img src="${e.image}" alt="${e.eventName}" class="event-img">
+            <div class="card-content">
+                <h2>${e.eventName}</h2>
+                <span class="category ${e.eventCategory}">
+                    ${e.eventCategory}
+                </span>
+                <p>📅 ${new Date(e.eventDate).toDateString()}</p>
+                <div class="event-timer" data-date="${e.eventDate}">--:--:--</div>
+                <button onclick="registerEvent(${e.id})">
+                    Register
+                </button>
+            </div>
         </div>
+        `;
+    });
+    container.innerHTML = html;
 
-    </div>
-    `;
-});
+    // Start the global countdown updater
+    updateAllCountdowns();
+    countdownInterval = setInterval(updateAllCountdowns, 1000);
 }
 function registerEvent(eventId) {
         const selectedEvent = events.find((event) => event.id === eventId);

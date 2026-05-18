@@ -117,7 +117,7 @@
             <div class="card">
               <div class="card-content">
                 <h3>${r.eventName}</h3>
-                class="category ${r.eventCategory}">${r.eventCategory}</span>
+                <span class="category${r.eventCategory}">${r.eventCategory}</span>
                 <p style="margin-top: 10px;">📅 ${new Date(r.eventDate).toDateString()}</p>
                 <p style="font-size: 0.8rem; color: #666;">Reg ID: ${r.registrationId}</p>
               </div>
@@ -184,4 +184,3 @@
     </script>
   </body>
 </html>
- 
