@@ -25,6 +25,18 @@
     <div class="form-container">
       <h1>Event Registration</h1>
 
+      <div
+        id="eventDescriptionDisplay"
+        style="
+          margin: 20px 0;
+          padding: 15px;
+
+          background: rgba(255, 255, 255, 0.05);
+          font-style: italic;
+          line-height: 1.5;
+        "
+      ></div>
+
       <form id="registrationForm">
         <input type="text" id="fullName" placeholder="Full Name" required />
 
@@ -70,6 +82,8 @@
       const selectedEvent = JSON.parse(localStorage.getItem("selectedEvent"));
 
       document.getElementById("eventName").value = selectedEvent.eventName;
+      document.getElementById("eventDescriptionDisplay").innerHTML =
+        selectedEvent.description;
 
       document.getElementById("eventCategory").value =
         selectedEvent.eventCategory;
