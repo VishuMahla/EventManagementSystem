@@ -66,18 +66,20 @@ function displayEvents(data) {
     let html = "";
     data.forEach(e => {
         html += `
-        <div class="card">
-            <img src="${e.image}" alt="${e.eventName}" class="event-img">
-            <div class="card-content">
-                <h2>${e.eventName}</h2>
-                <span class="category ${e.eventCategory}">
-                    ${e.eventCategory}
-                </span>
-                <p>📅 ${new Date(e.eventDate).toDateString()}</p>
-                <div class="event-timer" data-date="${e.eventDate}">--:--:--</div>
-                <button onclick="registerEvent(${e.id})">
-                    Register
-                </button>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm border-0 overflow-hidden">
+                <img src="${e.image}" alt="${e.eventName}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-dark">${e.eventName}</h5>
+                    <span class="badge ${e.eventCategory === 'Technical' ? 'bg-primary' : e.eventCategory === 'Cultural' ? 'bg-danger' : 'bg-success'} mb-2">
+                        ${e.eventCategory}
+                    </span>
+                    <p class="card-text text-muted small mb-2">📅 ${new Date(e.eventDate).toDateString()}</p>
+                    <div class="event-timer text-warning fw-bold mb-3" data-date="${e.eventDate}">--:--:--</div>
+                    <button class="btn btn-warning w-100 fw-bold text-white shadow-sm rounded-pill" onclick="registerEvent(${e.id})">
+                        Register Now
+                    </button>
+                </div>
             </div>
         </div>
         `;
