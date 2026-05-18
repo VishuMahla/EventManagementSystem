@@ -239,5 +239,5 @@ button {
 
 [data-theme="light"] body {
   background: var(--bg-color) !important;
-  color: var(--text-color) !important;
+  color: #eef2f7 !important;
 }
