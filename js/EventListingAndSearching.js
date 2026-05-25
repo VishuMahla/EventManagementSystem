@@ -68,7 +68,7 @@ function displayEvents(data) {
         html += `
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100 shadow-sm border-0 overflow-hidden">
-                <img src="${e.image}" alt="${e.eventName}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                <img src="${e.image}" alt="${e.eventName}" class="card-img-top" style="height: 250px; width:33  0px; object-fit: center;">
                 <div class="card-body">
                     <h5 class="card-title fw-bold text-dark">${e.eventName}</h5>
                     <span class="badge ${e.eventCategory === 'Technical' ? 'bg-primary' : e.eventCategory === 'Cultural' ? 'bg-danger' : 'bg-success'} mb-2">

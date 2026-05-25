@@ -91,6 +91,7 @@ button {
   padding: var(--space-8) 0;
 }
 
+
 .section-sm {
   padding: var(--space-6) 0;
 }
@@ -99,7 +100,8 @@ button {
   margin: 0 0 var(--space-2);
   font-size: clamp(1.7rem, 4vw, var(--font-2xl));
   line-height: 1.2;
-  color: black;
+  color: black
+  ;
 }
 
 .section-lead {
